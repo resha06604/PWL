@@ -23,8 +23,16 @@ function dekripsiurl($string){
     }
     
 }
-function search()
-{}
+function search($table, $where, $key = null)
+{ 
+        if(isset($key)){
+            $sql = "select * from $table where $where" ;
+        } else {
+            $sql = "select * from $table ";
+        }
+        $hasil = mysqli_query($GLOBALS['koneksi'], $sql) or die(mysqli_error($GLOBALS['koneksi']));
+        return $hasil;
+}
 
 ?>
 

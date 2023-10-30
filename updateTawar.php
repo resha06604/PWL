@@ -21,8 +21,7 @@
 	require "head.html";
     
 
-    $sql = "select * from matkul a JOIN kultawar b ON (a.id = b.idmatkul) JOIN dosen c ON (c.npp=b.npp)";
-
+    $sql = "select * from matkul a JOIN kultawar b ON (a.idmatkul = b.idmatkul) JOIN dosen c ON (c.npp=b.npp)";
     $hasil = mysqli_query($koneksi, $sql) or die(mysqli_error($koneksi));
 	$kosong=false;
     if(mysqli_num_rows($hasil)== 0){
@@ -75,8 +74,10 @@
 					<th>No.</th>
 					<th>Mata Kuliah</th>
 					<th>Nama Dosen</th>
+					<th style="text-align: center">Kelompok</th>
 					<th style="text-align: center">Hari</th>
-					<th>Jam</th>
+					<th style="text-align: center">Jam</th>
+					<th style="text-align: center">Ruang</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -94,19 +95,17 @@
 					</tr>
 					<?php
 				} else {
-					if ($awalData == 0) {
-						$no = $awalData + 1;
-					} else {
-						$no = $awalData;
-					}
+					$no=1;
 					while ($row = mysqli_fetch_assoc($hasil)) {
 					?>
 						<tr>
 							<td><?php echo $no ?></td>
-							<td><?php echo $row["namamatkul"] ?></td>
-							<td><?php echo $row["namadosen"] ?></td>
-                            <td><?php echo $row["hari"] ?></td>
-                            <td><?php echo $row["jamkul"] ?></td>
+							<td style="text-align: left"><?php echo $row["namamatkul"] ?></td>
+							<td style="text-align: left"><?php echo $row["namadosen"] ?></td>
+							<td style="text-align: center"><?php echo $row["klp"] ?></td>
+							<td style="text-align: center"><?php echo $row["hari"] ?></td>=
+                            <td style="text-align: center"><?php echo $row["jamkul"] ?></td>
+                            <td style="text-align: "><?php echo $row["ruang"] ?></td>
 
 							
 						</tr>
@@ -119,19 +118,7 @@
 		</table>
 	</div>
 
-<script>
-    $(document).ready(function(){
-        $("#matkul").change(function(){
-            var mk = $(this).val()
-            $.post('ajaxTawar.php',{matkul:mk},function(data){
-                if(data!=" ")
-                {
-                    $("dosen").html(data)
-                }
-            })
-        })
-    })
-</script>
+
 </body>
 
 </html>

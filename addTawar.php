@@ -22,7 +22,7 @@
 	?>
 	<div class="utama">
 		<h2 class="my-3 text-center">Tambah Data Penawaran</h2>
-		<form action="saveJadwal.php" method="post"></form>
+		<form action="sv_addTawar.php" method="post"></form>
             <div class="form-group">
                 <label for="matkul">Mata Kuliah</label>
                 <select name="matkul" id="matkul" class="form-control">
@@ -46,7 +46,7 @@
                     <option disabled selected>- Pilih Dosen -</option>
                 </select>
             </div>
-            <div class="form-group mb-3 col-6">
+            <div class="form-group mb-3">
 						<label for="klp">Kelompok:</label>
 						<div class="d-flex justify-content-between" id="klpGroup">
 							<input class=" form-control" type="text" name="klp" id="klp" style="width:82%" required>
@@ -89,11 +89,26 @@
 							<option value="H.3.1">H.3.1</option>
 							<option value="H.3.2">H.3.2</option>
 							<option value="H.3.3">H.3.3</option>
+							<option value="H.4.1">H.4.1</option>
+							<option value="H.4.1">H.4.1</option>
+                			<option value="H.4.1">H.4.1</option>
+                       		<option value="H.4.2">H.4.2</option>
+							<option value="H.4.3">H.4.3</option>
+                            <option value="H.5.1">H.5.1</option>
+                            <option value="H.5.2">H.5.2</option>
+                            <option value="H.5.3">H.5.3</option>
+							<option value="H.6.1">H.6.1</option>
+                            <option value="H.6.2">H.6.2</option>
+                            <option value="H.6.3">H.6.3</option>
+                            <option value="H.7.1">H.7.1</option>
+                            <option value="H.7.2">H.7.2</option>
+                            <option value="H.7.3">H.7.3</option>
+						</select>
                         </div>
                     </div>
 				</div>
 				<div>
-					<button type="submit" class="btn btn-success" value="Simpan">Simpan</button>
+					<button type="submit" class="btn btn-primary" value="Simpan">Simpan</button>
 				</div>
 	</div>
     <script>

@@ -47,7 +47,7 @@
 
     // $awalData = ($jmlDataPerHal * $halAktif) - $jmlDataPerHal;
 
-    $sql = "select * from krs a join matkul b on (a.idMatkul=b.idmatkul) join mhs c on (a.nim=c.nim) join dosen d on (a.nppDos=d.npp)";
+    $sql = "select * from krs a JOIN matkul b on (a.sks=b.sks) JOIN mhs c on (a.nim=c.nim) JOIN jadwal d on (a.idJadwal=d.idJadwal)";
     $hasil = mysqli_query($koneksi, $sql) or die(mysqli_error($koneksi));
     $kosong = false;
     if (mysqli_num_rows($hasil) == 0) {
@@ -76,13 +76,10 @@
             <thead class="thead-light">
                 <tr>
                     <th>No.</th>
-                    <th>Nama Mata Kuliah</th>
-                    <th>Nama Dosen</th>
-                    <th style="text-align: left">Nama Mahasiswa</th>
-                    <th style="text-align: center">Hari</th>
-                    <th style="text-align: center">Jam</th>
-                    <th style="text-align: center">Nilai</th>
-                    <th style="text-align: center">Tahun Akademik</th>
+                    <th>ID KRS</th>
+                    <th>NIM</th>
+                    <th>ID Jadwal</th>
+                    <th style="text-align: center">SKS</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -106,13 +103,10 @@
                     ?>
                         <tr>
                             <td><?php echo $no ?></td>
-                            <td style="text-align: left"><?php echo $row["namamatkul"] ?></td>
-                            <td style="text-align: left"><?php echo $row["namadosen"] ?></td>
-                            <td style="text-align: left"><?php echo $row["nama"] ?></td>
-                            <td style="text-align: center"><?php echo $row["hari"] ?></td>
-                            <td style="text-align: center"><?php echo $row["waktu"] ?></td>
-                            <td style="text-align: center"><?php echo $row["nilai"] ?></td>
-                            <td style="text-align: center"><?php echo $row["thAkd"] ?></td>
+                            <td style="text-align: left"><?php echo $row['idKrs'] ?></td>
+                            <td style="text-align: left"><?php echo $row["nim"] ?></td>
+                            <td style="text-align: left"><?php echo $row["idJadwal"] ?></td>
+                            <td style="text-align: center"><?php echo $row["sks"] ?></td>
                             <td>
                                 <a class="btn btn-outline-primary btn-sm" href="editKrs.php?kode=<?php echo enkripsiurl($row['idKrs']) ?>">Edit</a>
                                 <a class="btn btn-outline-danger btn-sm" href="hpsKrs.php?kode=<?php echo enkripsiurl($row['idKrs']) ?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
@@ -126,4 +120,4 @@
             </tbody>
         </table>
     </div>
-</body> 
+</body>

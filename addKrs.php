@@ -28,13 +28,13 @@
                     <div class="form-group mb-3 col-6">
                         <label for="mhs">Mahasiswa</label>
                         <select name="nim" id="mhs" class="form-select" style="height: 40px;width: 100% ; border :1px solid #ced4da;border-radius: 0.25rem;" required>
-                            <option value='' disabled selected>Pilih Mahasiswa</option>
+                            <option value='' disabled selected>Pilih NIM </option>
                             <?php
                             $hasil = search("mhs", "");
                             while ($row = mysqli_fetch_assoc($hasil)) {
                             ?>
-                                <option value=<?= $row["nim"]; ?>><?= $row["nama"] ?></option>
-                            <?php  }?>
+                                <option value=<?= $row["nim"]; ?>><?= $row["nim"] ?></option>
+                            <?php  } ?>
                         </select>
                     </div>
                     <div class="form-group mb-3 col-6">
@@ -46,48 +46,20 @@
                             while ($row = mysqli_fetch_assoc($hasil)) {
                             ?>
                                 <option value=<?= $row["idmatkul"]; ?>><?= $row["namamatkul"] ?></option>
-                            <?php  }?>
+                            <?php  } ?>
                         </select>
-                    </div>
-                    <div class="form-group mb-3 col-6">
-                        <label for="npp">Dosen</label>
-                        <select name="nppDos" id="dosen" class="form-select" style="height: 40px;width: 100% ; border :1px solid #ced4da;border-radius: 0.25rem;" required>
-                            <option value='' disabled selected>Pilih Dosen</option>
-                            <?php
-                            $hasil = search("dosen", "");
-                            while ($row = mysqli_fetch_assoc($hasil)) {
-                            ?>
-                                <option value=<?= $row["npp"]; ?>><?= $row["namadosen"] ?></option>
-                            <?php  }?>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3 col-6">
-                        <label for="npp">Nilai</label>
-                        <select class="form-select px-2 w-100" name="nilai" style="height: 40px; width: 50%;border :1px solid #ced4da;border-radius: 0.25rem;" required>
-                                <option value='' disabled selected>Pilih Nilai</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                                <option value="E">E</option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3 col-4">
-                        <label for="npp">Tahun Akademik</label>
-                        <div class="d-flex justify-content-between" id="klpGroup">
-                            <input class=" form-control" type="text" name="thAkd" id="thAkd" style="width:100%" required>
-                        </div>
+
                     </div>
                     <div class="form-group mb-3 col-4">
                         <label for="hari">Hari</label>
                         <select class="form-select px-2 w-100" name="hari" style="height: 40px; width: 50%;border :1px solid #ced4da;border-radius: 0.25rem;" required>
-                                <option value='' disabled selected>Pilih Hari</option>
-                                <option value="Senin">Senin</option>
-                                <option value="Selasa">Selasa</option>
-                                <option value="Rabu">Rabu</option>
-                                <option value="Kamis">Kamis</option>
-                                <option value="Kamis">Kamis</option>
-                                <option value="Jumat">Jumat</option>
+                            <option value='' disabled selected>Pilih Hari</option>
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
                         </select>
                     </div>
                     <div class="form-group mb-3 col-4">
@@ -107,11 +79,36 @@
                             <option value="15.30-18.00">15.30-18.00</option>
                         </select>
                     </div>
+                    <div class="form-group col-sm">
+                        <label for="semester" class="form-label d-block">Ruang:</label>
+                        <div class="d-flex justify-content-between">
+                            <select class="form-select px-2 w-100" name="ruang" style="height: 40px; width: 100%;border :1px solid #ced4da;border-radius: 0.25rem;" required>
+                                <option value='' disabled selected>Pilih Ruang</option>
+                                <option value="H.3.1">H.3.1</option>
+                                <option value="H.3.2">H.3.2</option>
+                                <option value="H.3.3">H.3.3</option>
+                                <option value="H.4.1">H.4.1</option>
+                                <option value="H.4.2">H.4.2</option>
+                                <option value="H.4.3">H.4.3</option>
+                                <option value="H.5.1">H.5.1</option>
+                                <option value="H.5.2">H.5.2</option>
+                                <option value="H.5.3">H.5.3</option>
+                                <option value="H.6.1">H.6.1</option>
+                                <option value="H.6.2">H.6.2</option>
+                                <option value="H.6.3">H.6.3</option>
+                                <option value="H.7.1">H.7.1</option>
+                                <option value="H.7.2">H.7.2</option>
+                                <option value="H.7.3">H.7.3</option>
+                            </select>
+                        </div>
+                                  
+                    </div>
+
                 </div>
-                    <button type="submit" class="btn btn-primary" value="Simpan">Simpan</button>
-                </div>
+                <button type="submit" class="btn btn-primary" value="Simpan">Simpan</button>
             </div>
-        </form>
+    </div>
+    </form>
     </div>
     <script>
         $(document).ready(function() {

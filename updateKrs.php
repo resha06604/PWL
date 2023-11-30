@@ -47,7 +47,7 @@
 
     // $awalData = ($jmlDataPerHal * $halAktif) - $jmlDataPerHal;
 
-    $sql = "select * from krs a JOIN matkul b on (a.sks=b.sks) JOIN mhs c on (a.nim=c.nim) JOIN jadwal d on (a.idJadwal=d.idJadwal)";
+    $sql = "select * from krs a JOIN matkul b on (a.sks=b.sks) JOIN mhs c on (a.nim=c.nim) JOIN kultawar d on (a.id_jadwal=d.idkultawar)";
     $hasil = mysqli_query($koneksi, $sql) or die(mysqli_error($koneksi));
     $kosong = false;
     if (mysqli_num_rows($hasil) == 0) {
@@ -105,7 +105,7 @@
                             <td><?php echo $no ?></td>
                             <td style="text-align: left"><?php echo $row['idKrs'] ?></td>
                             <td style="text-align: left"><?php echo $row["nim"] ?></td>
-                            <td style="text-align: left"><?php echo $row["idJadwal"] ?></td>
+                            <td style="text-align: left"><?php echo $row["id_jadwal"] ?></td>
                             <td style="text-align: center"><?php echo $row["sks"] ?></td>
                             <td>
                                 <a class="btn btn-outline-primary btn-sm" href="editKrs.php?kode=<?php echo enkripsiurl($row['idKrs']) ?>">Edit</a>

@@ -1,21 +1,19 @@
 <?php
-//memanggil file pustaka fungsi
 require "fungsi.php";
+$id = dekripsiurl($_GET["kode"]);
+$q = "select * from krs where idKrs=" . $id;
+$rs = mysqli_query($koneksi, $q);
+$nim = mysqli_fetch_assoc($rs)['nim'];
 
-//memindahkan data kiriman dari form ke var biasa
-$idKrs=dekripsiurl($_GET["kode"]);
-
-$q = "SELECT * FROM krs WHERE idKrs='".$idKrs."'";
-
-$rs = mysqli_query($koneksi,$q);
-if(mysqli_num_rows($rs) == 1){
-    //membuat query hapus data
-    $sql = "delete from krs where idKrs='$idKrs'";
+if (mysqli_num_rows($rs)== 1){
+    $sql = "delete from krs where idKrs=" . $id;
     mysqli_query($koneksi,$sql);
-    header("location:updateKrs.php");
-}else{
+    header("location:inputKRS.php?nim=". $nim);
+} else {
     echo "<script>
-    alert('Hapus krs gagal: idKrs " .$idKrs. " tidak ditemukan')
-    javascript:history.go(-1)
-    </script>";
+            alert('Hapus Gagal : ID = '" . $id . "' Tidak Ditemukan)
+            javascript:history.go(-1)
+          </script>"; 
 }
+
+?>

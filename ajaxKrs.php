@@ -1,8 +1,7 @@
 <?php
 require "fungsi.php";
 
-$sql = "SELECT * FROM kultawar WHERE idmatkul='". $_POST['mk']."'";
-$sql = "select * from kultawar a JOIN matkul b ON (a.idmatkul = b.idmatkul) JOIN dosen c ON (c.npp=a.npp) where a.idmatkul='". $_POST['mk']."'";
+$sql = "select * from kultawar a JOIN matkul b ON (a.idmatkul = b.id) JOIN dosen c ON (c.npp=a.npp) where a.idmatkul='". $_POST['mk']."'";
 $rs = mysqli_query($koneksi, $sql);
 if (mysqli_num_rows($rs) == 0) {
     echo "Mata kuliah tidak ditawarkan";

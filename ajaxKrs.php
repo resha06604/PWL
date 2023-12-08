@@ -1,7 +1,7 @@
 <?php
 require "fungsi.php";
 
-$sql = "select * from kultawar a JOIN matkul b ON (a.idmatkul = b.id) JOIN dosen c ON (c.npp=a.npp) where a.idmatkul='". $_POST['mk']."'";
+$sql = "select * from kultawar a JOIN matkul b ON (a.idmatkul = b.id) JOIN dosen c ON (c.npp=a.npp) where a.idmatkul='" . $_POST['mk'] . "'";
 $rs = mysqli_query($koneksi, $sql);
 if (mysqli_num_rows($rs) == 0) {
     echo "Mata kuliah tidak ditawarkan";
@@ -32,7 +32,7 @@ if (mysqli_num_rows($rs) == 0) {
                 <td><?php echo $data->namadosen ?></td>
                 <td><?php echo $data->hari, " ", $data->jamkul ?></td>
                 <td><?php echo $data->sks ?></td>
-                <td> <input type="radio" name="pilih" value="<?php echo $data->idkultawar, '-', $data->sks ?>"></td>
+                <td><input type="radio" name="pilih" value="<?php echo $data->idkultawar, '-', $data->sks ?>"></td>
             </tr>
         <?php
             $i++;

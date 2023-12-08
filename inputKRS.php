@@ -57,33 +57,33 @@
             <div id="tabelmatkul"></div>
             <!-- <input type="submit" value=""> -->
         </form>
+        <h3>KRS Sementara</h3>
         <table class="table table-hover">
-			<thead class="thead-light">
-				<tr>
-					<th>ID KRS</th>
-					<th>Mata Kuliah</th>
-					<th>Nama Dosen</th>
-					<th style="text-align: center">SKS</th>
-					<th style="text-align: center">Jadwal</th>
-					<th style="text-align: center">Aksi</th>
-				</tr>
-			</thead>
+            <thead class="thead-light">
+                <tr>
+                    <th>ID KRS</th>
+                    <th>Mata Kuliah</th>
+                    <th>Nama Dosen</th>
+                    <th style="text-align: center">SKS</th>
+                    <th style="text-align: center">Jadwal</th>
+                    <th style="text-align: center">Aksi</th>
+                </tr>
+            </thead>
             <?php
-            $sql = "select * from krs a join kultawar b on (a.id_jadwal=b.idkultawar) join matkul c on (c.id=b.idmatkul) join dosen d on (b.npp=d.npp) where a.nim='". $_GET['nim']."'";
-            $hasil2 = mysqli_query($koneksi,$sql);
-				while ($row = mysqli_fetch_assoc($hasil2)) {
-				?>
-					<tr>
-						<td><?php echo $row['idKrs'] ?></td>
-                        <td style="text-align: left"><?php echo $row["namamatkul"] ?></td>
-                        <td style="text-align: left"><?php echo $row["namadosen"] ?></td>
-                        <td style="text-align: center"><?php echo $row["sks"] ?></td>
-                        <td style="text-align: center"><?php echo $row["hari"] ?>-<?php echo $row["jamkul"] ?></td>
-                        <td>            
-                            <a class="btn btn-outline-danger btn-sm" href="hpsKrs.php?kode=<?php echo enkripsiurl($row['idKrs']) ?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
-                        </td>
-                        
-                    </tr>
+            $sql = "select * from krs a join kultawar b on (a.id_jadwal=b.idkultawar) join matkul c on (c.id=b.idmatkul) join dosen d on (b.npp=d.npp) where a.nim='" . $_GET['nim'] . "'";
+            $hasil2 = mysqli_query($koneksi, $sql);
+            while ($row = mysqli_fetch_assoc($hasil2)) {
+            ?>
+                <tr>
+                    <td><?php echo $row['idKrs'] ?></td>
+                    <td style="text-align: left"><?php echo $row["namamatkul"] ?></td>
+                    <td style="text-align: left"><?php echo $row["namadosen"] ?></td>
+                    <td style="text-align: center"><?php echo $row["sks"] ?></td>
+                    <td style="text-align: center"><?php echo $row["hari"] ?>-<?php echo $row["jamkul"] ?></td>
+                    <td style="text-align: center;">
+                        <a class="btn btn-outline-danger btn-sm" href="hpsKrs.php?kode=<?php echo enkripsiurl($row['idKrs']) ?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
+                    </td>
+                </tr>
             <?php } ?>
         </table>
     </div>

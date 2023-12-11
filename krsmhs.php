@@ -2,13 +2,14 @@
 
 require "fungsi.php";
 $nim = $_GET['nim'];
-$sql = "SELECT * FROM mhs a JOIN krs b ON (a.nim=b.nim) JOIN kultawar c ON (b.id_jadwal=c.idkultawar) JOIN matkul d ON (c.idmatkul = d.id) WHERE b.nim='" . $nim . "'";
+// $sql = "SELECT * FROM mhs a JOIN krs b ON (a.nim=b.nim) JOIN kultawar c ON (b.id_jadwal=c.idkultawar) JOIN matkul d ON (c.idmatkul = d.id) WHERE b.nim='" . $nim . "'";
+$sql = "select * from krs a join kultawar b on (a.id_jadwal=b.idkultawar) join matkul c on (c.id=b.idmatkul) join dosen d on (b.npp=d.npp) where a.nim='" . $nim . "'";
 
 //untuk ambil data mahasiswa
 $mhs = search('mhs', "nim = '" . $nim . "'");
 $rsmhs = mysqli_fetch_object($mhs);
 
-$rs = mysqli_query($koneksi, $sql);
+$rs = mysqli_query($koneksi, $sql) or die(mysqli_error($koneksi));
 
 $html = '<h3>KRS Mahasiswa</h3>';
 $html .= '<p>NIM : ' . $rsmhs->nim;
@@ -37,6 +38,10 @@ while ($data = mysqli_fetch_object($rs)) {
             </tr>';
     $i++;
 }
+$html .=    "<tr><td colspan=3>Total SKS</td>
+                 <td> " . $totalsks . "</td>
+                 <td colspan=2></td>
+            </tr>";
 $html .= '</table>';
 // echo $html;
 

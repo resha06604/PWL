@@ -11,17 +11,17 @@ $rsmhs = mysqli_fetch_object($mhs);
 
 $rs = mysqli_query($koneksi, $sql) or die(mysqli_error($koneksi));
 
-$html = '<h3>KRS Mahasiswa</h3>';
+$html = '<h2 style="text-align:center;">KRS Mahasiswa</h2>';
 $html .= '<p>NIM : ' . $rsmhs->nim;
 $html .= '<p>Nama : ' . $rsmhs->nama;
-$html .= '<table>
+$html .= '<table style="width:100%;border: 1px solid black;border-collapse: collapse;">
             <tr>
-                <td>No</td>
-                <td>Kode Mata Kuliah</td>
-                <td>Nama Mata Kuliah</td>
-                <td>SKS</td>
-                <td>Jadwal</td>
-                <td>Dosen Pengampu</td>
+                <th style="border: 1px solid black;text-align:center">No</th>
+                <th style="border: 1px solid black;text-align:center">Kode Mata Kuliah</th>
+                <th style="border: 1px solid black;text-align:center">Nama Mata Kuliah</th>
+                <th style="border: 1px solid black;text-align:center">SKS</th>
+                <th style="border: 1px solid black;text-align:center">Jadwal</th>
+                <th style="border: 1px solid black;text-align:center">Dosen Pengampu</th>
             </tr>';
 $i = 1;
 $totalsks = 0;
@@ -29,17 +29,17 @@ while ($data = mysqli_fetch_object($rs)) {
     $totalsks += $data->sks;
     $html .= '
             <tr>
-                <td>' . $i . '</td>
-                <td>' . $data->idmatkul . '</td>
-                <td>' . $data->namamatkul . '</td>
-                <td>' . $data->sks . '</td>
-                <td>' . $data->hari . ' ' . $data->jamkul . '</td>
-                <td>' . $data->npp . '</td>
+                <td style="border: 1px solid black;border-collapse: collapse;text-align:center">' . $i . '</td>
+                <td style="border: 1px solid black;border-collapse: collapse;text-align:center">' . $data->idmatkul . '</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">' . $data->namamatkul . '</td>
+                <td style="border: 1px solid black;border-collapse: collapse;text-align:center">' . $data->sks . '</td>
+                <td style="border: 1px solid black;border-collapse: collapse;text-align:center">' . $data->hari . ' ' . $data->jamkul . '</td>
+                <td style="border: 1px solid black;border-collapse: collapse;text-align:center">' . $data->npp . '</td>
             </tr>';
     $i++;
 }
 $html .=    "<tr><td colspan=3>Total SKS</td>
-                 <td> " . $totalsks . "</td>
+                 <td style='border: 1px solid black;border-collapse: collapse;text-align:center'> " . $totalsks . "</td>
                  <td colspan=2></td>
             </tr>";
 $html .= '</table>';

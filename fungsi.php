@@ -2,8 +2,8 @@
 //membuat koneksi ke database mysql
 
 
-// $koneksi = mysqli_connect('192.168.10.253', 'a122106604', 'polke001', 'a122106604');
-$koneksi=mysqli_connect('localhost','root','','pwlgenap2019-akademik');
+$koneksi = mysqli_connect('192.168.10.253', 'a122106604', 'polke001', 'a122106604');
+// $koneksi=mysqli_connect('localhost','root','','pwlgenap2019-akademik');
 
 function enkripsiurl($id)
 {
@@ -18,7 +18,7 @@ function dekripsiurl($string)
         return $id[1];
     } else {
         echo "<script>
-                alert('NPP yang Diinput Sudah Ada')
+                alert('Diinput Sudah Ada')
                 javascript:history.go(-1)
         
             </script>";

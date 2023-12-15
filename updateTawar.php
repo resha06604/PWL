@@ -19,17 +19,17 @@
 	//memanggil file berisi fungsi2 yang sering dipakai
 	require "fungsi.php";
 	require "head.html";
-    
-	
-    $sql = "select * from matkul a JOIN kultawar b ON (a.idmatkul = b.idmatkul) JOIN dosen c ON (c.npp=b.npp)";
-    $hasil = mysqli_query($koneksi, $sql) or die(mysqli_error($koneksi));
-	$kosong=false;
-    if(mysqli_num_rows($hasil)== 0){
-        $kosong=true;
-    }
+
+
+	$sql = "select * from matkul a JOIN kultawar b ON (a.id = b.idmatkul) JOIN dosen c ON (c.npp=b.npp)";
+	$hasil = mysqli_query($koneksi, $sql) or die(mysqli_error($koneksi));
+	$kosong = false;
+	if (mysqli_num_rows($hasil) == 0) {
+		$kosong = true;
+	}
 	?>
 
-<div class="utama">
+	<div class="utama">
 		<h2 class="text-center mt-3">Daftar Penawaran Mata Kuliah</h2>
 		<!-- <div class="text-center"><a href="prnDosenPdf.php"><span class="fas fa-print">&nbsp;Print</span></a></div> -->
 		<!-- <div class="text-center"><a href="prnDosenPdf.php"><span class="fas fa-print">&nbsp;Print</span></a></div> -->
@@ -79,7 +79,7 @@
 					<th style="text-align: center">Jam</th>
 					<th style="text-align: center">Ruang</th>
 					<th style="text-align: center">Aksi</th>
-					
+
 				</tr>
 			</thead>
 			<tbody>
@@ -97,7 +97,7 @@
 					</tr>
 					<?php
 				} else {
-					$no=1;
+					$no = 1;
 					while ($row = mysqli_fetch_assoc($hasil)) {
 					?>
 						<tr>
@@ -106,13 +106,15 @@
 							<td style="text-align: left"><?php echo $row["namadosen"] ?></td>
 							<td style="text-align: center"><?php echo $row["klp"] ?></td>
 							<td style="text-align: center"><?php echo $row["hari"] ?></td>
-                            <td style="text-align: center"><?php echo $row["jamkul"] ?></td>
-                            <td style="text-align: "><?php echo $row["ruang"] ?></td>
+							<td style="text-align: center"><?php echo $row["jamkul"] ?></td>
+							<td style="text-align: "><?php echo $row["ruang"] ?></td>
 							<td>
-                                <a class="btn btn-outline-primary btn-sm" href="editTawar.php?kode=<?php echo enkripsiurl($row['idkultawar']) ?>">Edit</a>
-                                <a class="btn btn-outline-danger btn-sm" href="hpsTawar.php?kode=<?php echo enkripsiurl($row['idkultawar']) ?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
-                            </td>
-							
+								<a class="btn btn-outline-primary btn-sm" href="editTawar.php?kode=<?php echo enkripsiurl($row['idkultawar']) ?>">Edit</a>
+								<a class="btn btn-outline-danger btn-sm" href="hpsTawar.php?kode=<?php echo enkripsiurl($row['idkultawar']) ?>" id="linkHps" onclick="return confirm('Yakin dihapus nih?')">Hapus</a>
+								<a class="btn btn-outline-primary btn-sm" href="cetakpdf.php?type=krm&param=<?php echo $row['npp'] ?>">Cetak KRM</a>
+
+							</td>
+
 						</tr>
 				<?php
 						$no++;

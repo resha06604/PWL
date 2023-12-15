@@ -34,7 +34,7 @@ while ($data = mysqli_fetch_object($rs)) {
                 <td style="border: 1px solid black;border-collapse: collapse;">' . $data->namamatkul . '</td>
                 <td style="border: 1px solid black;border-collapse: collapse;text-align:center">' . $data->sks . '</td>
                 <td style="border: 1px solid black;border-collapse: collapse;text-align:center">' . $data->hari . ' ' . $data->jamkul . '</td>
-                <td style="border: 1px solid black;border-collapse: collapse;text-align:left">' . $data->namadosen . '</td>
+                <td style="border: 1px solid black;border-collapse: collapse;text-align:center">' . $data->npp . '</td>
             </tr>';
     $i++;
 }

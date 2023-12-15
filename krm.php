@@ -14,7 +14,7 @@ $html .= "<table style='border:1px solid black; border-collapse: collapse'>
     <tr style='border:1px solid black;'>
         <th style='border:1px solid black;'>No</th>
         <th style='border:1px solid black;'>Kode</th>
-        <th style='text-align: center; border:1px solid black;'>Nama Mata Kuliah</th>
+        <th style='text-align: center; border:1px solid black;'>Namzzza Mata Kuliah</th>
         <th style='text-align: center; border:1px solid black;'>Kelompok</th>
         <th style='text-align: center; border:1px solid black;'>SKS</th>
         <th style='text-align: center; border:1px solid black;'>Jadwal</th>

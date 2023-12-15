@@ -6,7 +6,7 @@ $rs = mysqli_query($koneksi, $sql) or die(mysqli_error($koneksi));
 $mhs = search("dosen", "npp='" . $npp . "'", $npp);
 $sks = 0;
 $rsmhs = mysqli_fetch_assoc($mhs);
-$html = "<div style= 'width:100%; text-align:center'><h3>KRS Mahasiswa</h3></div>";
+$html = "<div style= 'width:100%; text-align:center'><h3>KRM Dosen</h3></div>";
 $html .= "<p>NPP : " . $rsmhs["npp"] . "</p>";
 $html .= "<p>Nama : " . $rsmhs["namadosen"] . "</p>";
 $html .= "<table style='border:1px solid black; border-collapse: collapse'>
@@ -14,11 +14,10 @@ $html .= "<table style='border:1px solid black; border-collapse: collapse'>
     <tr style='border:1px solid black;'>
         <th style='border:1px solid black;'>No</th>
         <th style='border:1px solid black;'>Kode</th>
-        <th style='text-align: center; border:1px solid black;'>Namzzza Mata Kuliah</th>
+        <th style='text-align: center; border:1px solid black;'>Nama Mata Kuliah</th>
         <th style='text-align: center; border:1px solid black;'>Kelompok</th>
         <th style='text-align: center; border:1px solid black;'>SKS</th>
         <th style='text-align: center; border:1px solid black;'>Jadwal</th>
-        <th style='text-align: center; border:1px solid black;'>Ruang</th>
 
     </tr>
 </thead>";
@@ -31,15 +30,15 @@ while ($row = mysqli_fetch_assoc($rs)) {
         <td style='border:1px solid black;'>" . $row['idmatkul'] . "</td>
         <td style='border:1px solid black;'>" . $row['namamatkul'] . "</td>
         <td style='border:1px solid black;'>" . $row['klp'] . "</td>
-        <td style='border:1px solid black;'>" . $row['sks'] . "</td>
+        <td style='border:1px solid black;text-align:center'>" . $row['sks'] . "</td>
         <td style='text-align: center; border:1px solid black;'>" . $row['hari'] . " - " . $row['jamkul'] . "</td>
     </tr>";
     $i++;
 }
 $html .= "
 <tr style='border:1px solid black;'>
-    <td colspan=3>Total SKS</td>
-    <td style='border:1px solid black;'>" . $sks . "</td>
+    <td colspan=4>Total SKS</td>
+    <td style='border:1px solid black;text-align:center'>" . $sks . "</td>
     <td ></td>
 </tr>";
 $html .= "</table>";
